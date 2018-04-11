@@ -1,0 +1,20 @@
+* {
+    box-sizing: border-box;
+}
+
+.flex {
+    display: flex;
+}
+
+.direction-col{
+    flex-direction: column;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.underline{
+    text-decoration: underline;
+}
+

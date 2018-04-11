@@ -2,13 +2,12 @@ export default {
     props: ['email'],
     template: `
         <section>
-          <div>
-            <button> Compose </button>
-            <div>
+          <div class="email-details flex direction-col">
+            <button class="btn"> Compose </button>
+            <div class="flex direction-col">
                 <h2>{{ email.subject }}</h2>
-                <p>From: {{ email.sendFrom.name }} | {{ email.sendFrom.email }} </p>
-                <p>Sent: {{ email.sentAt }}</p>
-                <hr>
+                <p><span  class="bold underline">From</span>: {{ email.sendFrom.name }} | {{ email.sendFrom.email }} </p>
+                <p><span  class="bold underline">Sent</span>: {{ email.sentAt }}</p>
                 <p>{{ email.body }}</p>
             </div>
             </div>
