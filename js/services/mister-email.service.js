@@ -13,11 +13,19 @@ function createData() {
     return storageService.load(KEY);
 }
 
-function getData() {
-    let data =  storageService.load[KEY];
-    return (data)? data: createData();
+function query() {
+    // let data =  storageService.load(KEY)
+    // return (data)? data: createData();
+    return storageService.load(KEY)
+            .then(emails => {
+               return (emails) ? emails : createData()
+            })
+
 }
 
 export default {
-    getData
+    query
 }
+
+
+

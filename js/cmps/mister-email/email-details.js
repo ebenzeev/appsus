@@ -1,5 +1,6 @@
 export default {
+    props: ['email'],
     template: `
-        <h2>email details</h2>
+        <h2>{{ email.subject }}</h2>
     `
 }
