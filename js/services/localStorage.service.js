@@ -4,7 +4,7 @@ function store(key, data) {
 }
 
 function load(key) {
-    var str = localStorage[key] || 'null';
+    var str = localStorage[key];
     return Promise.resolve(JSON.parse(str));
 }
 
