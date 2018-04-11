@@ -4,9 +4,11 @@ import emailDetails from '../../cmps/mister-email/email-details.js';
 export default {
     template: `
     <section class="email-home">
-        <email-list :emails="emails" @selected="selectEmail"></email-list>
-        <email-details v-if="selectedEmail" :email="selectedEmail"></email-details>
-        <div v-else>Loading....</div>
+        <div class="emails-area">
+            <email-list :emails="emails" @selected="selectEmail"></email-list>
+            <email-details v-if="selectedEmail" :email="selectedEmail" class="email-detalis"></email-details>
+            <div v-else>Loading....</div>
+        </div>
     </section>
     `,
     methods: {
@@ -21,10 +23,10 @@ export default {
         }
     },
     created() {
+
         emailService.query()
         .then(emails => this.emails = emails)
-        .then(()=> this.selectedEmail = this.emails[0])
-
+        .then(()=> this.selectedEmail = this.emails[0]);
     },
     components: {
         emailList,

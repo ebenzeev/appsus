@@ -8,12 +8,56 @@ body {
 }
 
 .email-home {
-    display: flex;
     margin: 10px;
     padding: 20px;
     border: 3px solid red;
 }
 
+.emails-area {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+}
+
 .email-preview {
-    font-size: 10px;
+    display: flex;
+    flex-flow: row wrap;
+    width: 400px;
+}
+
+.mail-details-item {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.mail-from {
+    min-width: 20%;
+}
+
+.mail-subject {
+    min-width: 65%;
+}
+
+.sent-at {
+    min-width: 15%;
+}
+
+.email-preview {
+    min-width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.email-list {
+    min-width: 70%;
+}
+
+.email-list ul li {
+    list-style: none;
+}
+
+.email-preview {
+    min-width: 30%;
 }

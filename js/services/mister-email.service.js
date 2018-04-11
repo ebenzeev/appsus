@@ -4,23 +4,23 @@ const KEY = 'emailAppKey';
 
 function createData() {
     let data = [
-        {subject: 'orel', body: 'dsfsfdsf', isRead: false, sentAt: Date.now()},
-        {subject: 'bobo', body: 'sdfsfsdfsdf', isRead: false, sentAt: Date.now()},
-        {subject: 'eyal', body: 'sdfsfsdfsdfcvvvvv', isRead: false, sentAt: Date.now()},
-        {subject: 'popo', body: '123dfefwfewdfsdfsdffsdfsdfsd', isRead: false, sentAt: Date.now()}
+        {sendFrom: { name: 'Orel', email: 'orel@walla.com' }, subject: 'לכבוד רמי היקר', body: 'היני בביתת מוזמן להגיע', isRead: false, sentAt: Date.now()},
+        {sendFrom: { name: 'Popo', email: 'popo@walla.com' }, subject: 'החודש בלבד', body: 'מבצע למצטרפים חדשים לחברת הוט טריםל ב 99 ש״ח בלבד', isRead: false, sentAt: Date.now()},
+        {sendFrom: { name: 'Lolo', email: 'lolo@walla.com' }, subject: 'מה קורה ?', body: 'אני מכין ארוחת ערב אתה מגיע ?', isRead: false, sentAt: Date.now()},
+        {sendFrom: { name: 'Eyal', email: 'eyal@walla.com' }, subject: 'הספר שאמרתי לך', body: 'זוכר שדיברנטו על ספר שבוע שעבר ? לספר קוראים ״אל תקרא אותי״ ממליץ בחום', isRead: false, sentAt: Date.now()}
     ];
     storageService.store(KEY,data);
     return storageService.load(KEY);
 }
 
 function query() {
-    // let data =  storageService.load(KEY)
-    // return (data)? data: createData();
-    return storageService.load(KEY)
-            .then(emails => {
-               return (emails) ? emails : createData()
-            })
+    var emails = storageService.load(KEY);
+    return (emails)? emails: createData();
 
+    // return storageService.load(KEY)
+    //         .then(emails => {
+    //            return (emails)? emails: createData();
+    //         });
 }
 
 export default {
