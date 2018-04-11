@@ -7,6 +7,9 @@ export default {
         <ul>
             <li v-for="email in emails">{{ email }}</li>
         </ul>
+        <!-- <email-list></email-list> -->
+        <router-view></router-view>
+        <!-- <emial-status></email-status> -->
     </section>
     `,
     data() {
