@@ -1,5 +1,5 @@
 import home from './pages/appsus.home.js';
-import emailHome from './mister-email/pages/email.home.js';
+import emailHome from './pages/mister-email/email.home.js';
 
 const routes = [
     {path: '/', component: home},
@@ -7,6 +7,6 @@ const routes = [
 ];
 
 Vue.use(VueRouter);
-var myRouter = new VueRouter({routes});
+var myRouter = new VueRouter({mode:'history' ,routes});
 
 export default myRouter;
