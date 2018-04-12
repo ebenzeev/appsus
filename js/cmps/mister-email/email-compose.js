@@ -28,7 +28,7 @@ export default {
                 .then(() => {
                     console.log('Saved!', this.email.id);
                     this.emitSelected(this.email.id);
-                    this.$router.push('/email/'+this.email.id);
+                    this.$router.push('/email/detail/'+this.email.id);
                 })
         },
         emitSelected(idx) {

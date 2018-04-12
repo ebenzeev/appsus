@@ -26,8 +26,14 @@ export default {
             var selectedEmail = this.emails[idx]
             this.$router.push('/email/detail/' + selectedEmail.id)
         },
-        close(){
-            console.log('dfsdfsd');
+        close(value){
+            console.log(value);
+            emailService.deleteEmail(value)
+            .then(() => {
+                emailService.query()
+                .then(emails => this.emails = emails)
+                .then(() => this.selectEmail(0))
+            })
         },
         hideButton(){
             this.compose = !this.compose;
