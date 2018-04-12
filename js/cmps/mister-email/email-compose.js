@@ -3,15 +3,8 @@ import utilService from '../../services/util-services.js'
 
 export default {
     template: `
-        <section class="email-composer">
             <h2>email compose</h2>
-            <h1>Edit</h1>
-            <form @submit.prevent="saveEmail">
-                <input type="text" v-model="email.subject" >
-                <input type="text" v-model="email.body" >
-                <button type="submit"> {{(email.id)? 'Save': 'Add'}}</button>
-            </form>
-        </section>
+        
         
     `
     ,
