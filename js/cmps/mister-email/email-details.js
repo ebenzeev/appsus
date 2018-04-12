@@ -28,6 +28,13 @@ export default {
                 })
         }
     },
+    deleteEmail() {
+        MisterEmailSerice.deleteEmail(this.email.id)
+        .then(res => {
+            console.log(`Email ${this.email.id} Deleted`);
+            this.$router.push('/detail/'+email.id);
+        })
+    },
     created() {
         console.log(this.id)
         this.setEmail(this.id)
