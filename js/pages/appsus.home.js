@@ -2,7 +2,7 @@ export default {
     template: `
     <section class="home">
         <header>
-            <h1>Welcome to appSuS!</h1>
+            <h1>Welcome to AppSuS!</h1>
         <header>
 <!-- 
         <main></main>
