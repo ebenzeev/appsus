@@ -36,7 +36,8 @@ function saveEmail(email) {
 function deleteEmail(emailId) {
     return storageService.load(KEY)
         .then(emails => {
-            var emailIdx = emails.findIndex(email => email.id === emailId);
+            var emailIdx = emails.findIndex(email => email.id + '' === emailId + '');
+            console.log(emailIdx)
             emails.splice(emailIdx, 1);
             return storageService.store(KEY, emails);
         })
@@ -56,7 +57,8 @@ function getById(id) {
 export default {
     query,
     saveEmail,
-    getById
+    getById,
+    deleteEmail
 
 }
 
