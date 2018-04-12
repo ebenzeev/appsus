@@ -8,10 +8,11 @@ export default {
     <section class="email-home">
     <router-link to="/email/compose"><button class="btn"> Compose </button></router-link>
         <div class="filter-area">
-            <email-filter></email-filter>
+            <email-filter @userInput="runSearchText"></email-filter>
         </div>
         <div class="emails-area">
-            <email-list :emails="emails" @selected="selectEmail"></email-list>
+            <email-list v-if="!emailToSerch.length" :emails="emails" @selected="selectEmail"></email-list>
+            <email-list v-else :emails="emailToSerch" @selected="selectEmail"></email-list>
             <!-- <email-details v-if="selectedEmail" :id="selectedEmail.id" class="email-detalis"></email-details> -->
             <!-- <div v-else>Loading....</div> -->
             <div style="border: 3px green dashed">
@@ -26,16 +27,25 @@ export default {
             this.$router.push('/email/detail/' + selectedEmail.id)
         },
         close(){
-            console.log('dfsdfsd')
+            console.log('dfsdfsd');
         },
         hideButton(){
             this.compose = !this.compose;
+        },
+        runSearchText(elInput) {
+             this.emailToSerch = this.emails.filter(function(email) {
+                var emailSubject = email.subject.toLowerCase();;
+                var input = elInput.toLowerCase();
+                return emailSubject.includes(input);
+            });
         }
     },
     data() {
         return {
             emails: [],
+            emailToSerch: [],
             compose: true,
+            text: 'hello'
         }
     },
     created() {
