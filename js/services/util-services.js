@@ -5,12 +5,16 @@ function generateDate(time) {
     
 }
 
-function sortNumber(a,b) {
-    return a.sentAt - b.sentAt;
+function sortNumberDescending(a, b) {
+    return a.time - b.time;
 }
 
+function sortNumberAscending(a, b) {
+    return b.time - a.time;
+}
 
 export default {
     generateDate,
-    sortNumber
+    sortNumberDescending,
+    sortNumberAscending
 }

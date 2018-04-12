@@ -18,7 +18,7 @@ export default {
     ,
     data() {
         return {
-            email: {sendFrom: { name: 'Orela', email: 'orel@walla.com' } , subject: '', body: ``, isRead: false, sentAt: utilService.generateDate(Date.now())}
+            email: {sendFrom: { name: 'Orela', email: 'orel@walla.com' } , subject: '', body: ``, isRead: false, sentAt: utilService.generateDate(Date.now()), time: Date.now()}
         }
     },
     methods: {

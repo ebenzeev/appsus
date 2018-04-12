@@ -10,7 +10,7 @@ export default {
     <section class="email-home">
     <router-link to="/email/compose"><button class="btn"> Compose </button></router-link>
         <div class="filter-area">
-            <email-filter @userInput="runSearchText" @userSortByDate="sortByDateDescending"></email-filter>
+            <email-filter @userInput="runSearchText" @userSortByDateDescending="sortByDateDescending" @userSortByDateAscending="sortByDateAscending"></email-filter>
         </div>
         <div class="emails-area">
             <email-list v-if="!emailToSerch.length" :emails="emails" @selected="selectEmail"></email-list>
@@ -26,24 +26,22 @@ export default {
     methods: {
         selectEmail(idx = 0) {
             var selectedEmail = this.emails[idx]
-            this.$router.push('/email/detail/' + selectedEmail.id)
+            this.$router.push('/email/detail/' + selectedEmail.id);
         },
-<<<<<<< HEAD
         sortByDateDescending() {
             this.emailToSerch = this.emails.sort(utilService.sortNumberDescending);
         },
-        close(){
-            console.log('dfsdfsd');
-=======
+        sortByDateAscending() {
+            this.emailToSerch = this.emails.sort(utilService.sortNumberAscending);
+        },
         close(value){
-            console.log(value);
-            emailService.deleteEmail(value)
-            .then(() => {
-                emailService.query()
-                .then(emails => this.emails = emails)
-                .then(() => this.selectEmail(0))
-            })
->>>>>>> a85cb240acd460bad452e9149ca8f08a859a9bc6
+                console.log(value);
+                emailService.deleteEmail(value)
+                .then(() => {
+                    emailService.query()
+                    .then(emails => this.emails = emails)
+                    .then(() => this.selectEmail(0))
+                })
         },
         hideButton(){
             this.compose = !this.compose;
