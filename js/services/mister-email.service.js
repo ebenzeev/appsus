@@ -26,8 +26,8 @@ function saveEmail(email) {
                 var emailIdx = emails.findIndex(currEmail => currEmail.id === email.id)
                 emails.splice(emailIdx, 1, email);
             } else {
-                email.id = Date.now();
-                emails.push(email);
+                email.id =  emails.length+1;
+                emails.unshift(email);
             }
             return storageService.store(KEY, emails);
         });
@@ -38,7 +38,7 @@ function saveEmail(email) {
 function getById(id) {
     return storageService.load(KEY)
             .then(emails => {
-                var email = emails.find(email => email.id + '' ===id + '')
+                var email = emails.find(email => email.id + '' === id + '')
                 if(email) return email
                 return Promise.reject('email with id: ' + id + 'not found')
             })
