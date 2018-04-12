@@ -60,6 +60,16 @@ body {
     min-width: 15%;
 }
 
+.bold {
+    font-weight: bold;
+}
+
+.email-filter {
+    display: flex;
+    flex-direction: row;
+    padding: 10px 0;
+}
+
 .email-detalis {
     padding: 30px;
     min-width: 35%;

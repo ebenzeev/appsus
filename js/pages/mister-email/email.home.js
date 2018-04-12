@@ -1,10 +1,14 @@
 import emailService from '../../services/mister-email.service.js';
 import emailList from '../../cmps/mister-email/email-list.js';
 import emailDetails from '../../cmps/mister-email/email-details.js';
-import emailCompose from '../../cmps/mister-email/email-compose.js'
+import emailCompose from '../../cmps/mister-email/email-compose.js';
+import emailFilter from '../../cmps/mister-email/email-filter.js';
 export default {
     template: `
     <section class="email-home">
+        <div class="filter-area">
+            <email-filter></email-filter>
+        </div>
         <div class="emails-area">
             <email-list :emails="emails" @selected="selectEmail"></email-list>
             <!-- <email-details v-if="selectedEmail" :id="selectedEmail.id" class="email-detalis"></email-details> -->
@@ -38,7 +42,8 @@ export default {
     components: {
         emailList,
         emailDetails,
-        emailCompose
+        emailCompose,
+        emailFilter
     }
 }
 
