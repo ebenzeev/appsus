@@ -6,6 +6,7 @@ import emailFilter from '../../cmps/mister-email/email-filter.js';
 export default {
     template: `
     <section class="email-home">
+    <router-link to="/email/compose"><button class="btn"> Compose </button></router-link>
         <div class="filter-area">
             <email-filter></email-filter>
         </div>
