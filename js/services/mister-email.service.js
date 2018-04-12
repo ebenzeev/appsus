@@ -5,10 +5,10 @@ const KEY = 'emailAppKey';
 var gId = 0 
 function createData() {
     let data = [
-        { id: ++gId, sendFrom: {  name: 'Orel', email: 'orel@walla.com' } , subject: 'Dear Rami', body: `I'm at home. let's meet at 20:00pm`, isRead: false, sentAt: utilService.generateDate()},
-        { id: ++gId,sendFrom: {  name: 'Popo', email: 'popo@walla.com' }, subject: 'Limited time DEAL', body: 'Hot tripel is having a good price for new memebers, only 99.90 annual', isRead: false, sentAt: utilService.generateDate()},
-        { id: ++gId, sendFrom: {  name: 'Lolo', email: 'lolo@walla.com' }, subject: 'Wasssuuup', body: 'Are we hacing a dinner tonight?', isRead: false, sentAt:utilService.generateDate()},
-        { id: ++gId,sendFrom: {  name: 'Eyal', email: 'eyal@walla.com' }, subject: 'The book we talked', body: 'Just remebered the book I told you. it is "vue JS"', isRead: false, sentAt: utilService.generateDate()}
+        { id: ++gId, sendFrom: {  name: 'Orel', email: 'orel@walla.com' } , subject: 'Dear Rami', body: `I'm at home. let's meet at 20:00pm`, isRead: false, sentAt: utilService.generateDate(Date.now())},
+        { id: ++gId,sendFrom: {  name: 'Popo', email: 'popo@walla.com' }, subject: 'Limited time DEAL', body: 'Hot tripel is having a good price for new memebers, only 99.90 annual', isRead: false, sentAt: utilService.generateDate(Date.now())},
+        { id: ++gId, sendFrom: {  name: 'Lolo', email: 'lolo@walla.com' }, subject: 'Wasssuuup', body: 'Are we hacing a dinner tonight?', isRead: false, sentAt: utilService.generateDate(Date.now())},
+        { id: ++gId,sendFrom: {  name: 'Eyal', email: 'eyal@walla.com' }, subject: 'The book we talked', body: 'Just remebered the book I told you. it is "vue JS"', isRead: false, sentAt: utilService.generateDate(Date.now())}
     ];
     storageService.store(KEY,data);
     return storageService.load(KEY);

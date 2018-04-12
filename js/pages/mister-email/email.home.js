@@ -3,12 +3,14 @@ import emailList from '../../cmps/mister-email/email-list.js';
 import emailDetails from '../../cmps/mister-email/email-details.js';
 import emailCompose from '../../cmps/mister-email/email-compose.js';
 import emailFilter from '../../cmps/mister-email/email-filter.js';
+import utilService from '../../services/util-services.js';
+
 export default {
     template: `
     <section class="email-home">
         <router-link to="/email/compose"><button class="btn"> Compose </button></router-link>
         <div class="filter-area">
-            <email-filter @userInput="runSearchText"></email-filter>
+            <email-filter @userInput="runSearchText" @userSortByDate="sortByDateDescending"></email-filter>
         </div>
         <div class="emails-area">
             <email-list v-if="!emailToSerch.length" :emails="emails" @selected="selectEmail"></email-list>
@@ -25,6 +27,9 @@ export default {
         selectEmail(idx = 0) {
             var selectedEmail = this.emails[idx]
             this.$router.push('/email/detail/' + selectedEmail.id)
+        },
+        sortByDateDescending() {
+            this.emailToSerch = this.emails.sort(utilService.sortNumberDescending);
         },
         close(){
             console.log('dfsdfsd');
