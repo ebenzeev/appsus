@@ -33,6 +33,15 @@ function saveEmail(email) {
         });
 }
 
+function deleteEmail(emailId) {
+    return storageService.load(KEY)
+        .then(emails => {
+            var emailIdx = emails.findIndex(email => email.id === emailId);
+            emails.splice(emailIdx, 1);
+            return storageService.store(KEY, emails);
+        })
+}
+
 
 
 function getById(id) {

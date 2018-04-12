@@ -9,6 +9,7 @@ export default {
                 Subject: <input type="text" v-model="email.subject" >
                 Message:<input type="text" v-model="email.body" >
                 <button type="submit"> {{(email.id)? 'Reply': 'Send'}}</button>
+
             </form>
         </section>
         
@@ -25,9 +26,13 @@ export default {
             console.log(this.email);
             emailService.saveEmail(this.email)
                 .then(() => {
-                    console.log('Saved!');
-                    this.$router.push('/email');
+                    console.log('Saved!', this.email.id);
+                    this.emitSelected(this.email.id);
+                    this.$router.push('/email/'+this.email.id);
                 })
+        },
+        emitSelected(idx) {
+            this.$emit('selected',idx);
         }
     }
 }
