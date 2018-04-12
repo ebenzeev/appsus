@@ -3,7 +3,7 @@ export default {
     <section class="home">
         <header>
             <h1>Welcome to AppSuS!</h1>
-        <header>
+    </header>
 <!-- 
         <main></main>
 
