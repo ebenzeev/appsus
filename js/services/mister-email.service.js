@@ -24,8 +24,24 @@ function query() {
     //         });
 }
 
+function saveEmail(email) {
+    return storageService.load(KEY)
+        .then(emails => {
+            if (email.id) {
+                var emailIdx = emails.findIndex(currEmail => currEmail.id === email.id)
+                emails.splice(emailIdx, 1, email);
+            } else {
+                email.id = Date.now();
+                emails.push(email);
+            }
+            return storageService.store(KEY, emails);
+        });
+}
+
 export default {
-    query
+    query,
+    saveEmail
+
 }
 
 

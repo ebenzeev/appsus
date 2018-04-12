@@ -50,7 +50,11 @@ body {
 }
 
 .email-list {
-    min-width: 70%;
+    min-width: 60%;
+    /* width: 30%; */
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 
 .email-list ul li {
@@ -78,5 +82,5 @@ body {
 
 .email-details > h2{
     font: bold;
-    font-feature-settings: 
 }
+

@@ -7,8 +7,9 @@ const routes = [
     {path: '/', component: home},
     {path: '/email', component: emailHome,
     children: [
-        {path: 'compose', component: emailCompose},
-        {path: 'details/:id', component: emailDetails}      
+        {path: '/compose', component: emailCompose},
+        {path: 'details/:id', component: emailDetails
+        }      
     ]    
 }
 ];
