@@ -4,7 +4,6 @@ export default {
     template: `
         <section>
           <div v-if="email" class="email-details flex direction-col" >
-            <button class="btn"> Compose </button>
             <div class="flex direction-col" v-if="email">
                 <h2>{{ email.subject }}</h2>
                 <p><span  class="bold underline">From</span>: {{ email.sendFrom.name }} | {{ email.sendFrom.email }} </p>

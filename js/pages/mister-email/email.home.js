@@ -13,7 +13,6 @@ export default {
             <email-list :emails="emails" @selected="selectEmail"></email-list>
             <!-- <email-details v-if="selectedEmail" :id="selectedEmail.id" class="email-detalis"></email-details> -->
             <!-- <div v-else>Loading....</div> -->
-            <router-link to="/email/compose">compose</router-link>
             <div style="border: 3px green dashed">
             <router-view @close="close"></router-view>
             </div>
@@ -27,11 +26,15 @@ export default {
         },
         close(){
             console.log('dfsdfsd')
+        },
+        hideButton(){
+            this.compose = !this.compose;
         }
     },
     data() {
         return {
             emails: [],
+            compose: true,
         }
     },
     created() {

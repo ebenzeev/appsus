@@ -3,7 +3,14 @@ import utilService from '../../services/util-services.js'
 
 export default {
     template: `
+            <section class="email-composer">
             <h2>email compose</h2>
+            <form @submit.prevent="saveEmail">
+                Subject: <input type="text" v-model="email.subject" >
+                Message:<input type="text" v-model="email.body" >
+                <button type="submit"> {{(email.id)? 'Reply': 'Send'}}</button>
+            </form>
+        </section>
         
         
     `
@@ -19,7 +26,7 @@ export default {
             emailService.saveEmail(this.email)
                 .then(() => {
                     console.log('Saved!');
-                    this.$router.push('/car');
+                    this.$router.push('/email');
                 })
         }
     }
