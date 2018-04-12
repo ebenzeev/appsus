@@ -6,6 +6,7 @@ import emailFilter from '../../cmps/mister-email/email-filter.js';
 export default {
     template: `
     <section class="email-home">
+        <router-link to="/email/compose"><button class="btn"> Compose </button></router-link>
         <div class="filter-area">
             <email-filter @userInput="runSearchText"></email-filter>
         </div>
@@ -26,7 +27,7 @@ export default {
             this.$router.push('/email/detail/' + selectedEmail.id)
         },
         close(){
-            console.log('dfsdfsd')
+            console.log('dfsdfsd');
         },
         hideButton(){
             this.compose = !this.compose;
