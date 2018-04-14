@@ -4,11 +4,14 @@ import emailDetails from '../../cmps/mister-email/email-details.js';
 import emailCompose from '../../cmps/mister-email/email-compose.js';
 import emailFilter from '../../cmps/mister-email/email-filter.js';
 import utilService from '../../services/util-services.js';
+import storageService from '../../services/localStorage.service.js';
+
+import {KEY} from '../../services/mister-email.service.js';
 
 export default {
     template: `
     <section class="email-home">
-    <router-link to="/email/compose"><button class="btn"> Compose </button></router-link>
+    <router-link to="/email/compose"><button class="btn-compose"> Compose </button></router-link>
         <div class="filter-area">
             <email-filter @userInput="runSearchText" @userSortByDateDescending="sortByDateDescending" @userSortByDateAscending="sortByDateAscending"></email-filter>
         </div>
@@ -17,8 +20,9 @@ export default {
             <email-list v-else :emails="emailToSerch" @selected="selectEmail"></email-list>
             <!-- <email-details v-if="selectedEmail" :id="selectedEmail.id" class="email-detalis"></email-details> -->
             <!-- <div v-else>Loading....</div> -->
-            <div style="border: 3px green dashed">
-            <router-view @close="close"></router-view>
+
+            <div class="comp-area">
+                <router-view @close="close" @updateData="updateData"></router-view>
             </div>
         </div>
     </section>
@@ -27,6 +31,8 @@ export default {
         selectEmail(idx = 0) {
             var selectedEmail = this.emails[idx]
             this.$router.push('/email/detail/' + selectedEmail.id);
+            this.emails[idx].isRead = true;
+            storageService.store(KEY,this.emails);
         },
         sortByDateDescending() {
             this.emailToSerch = this.emails.sort(utilService.sortNumberDescending);
@@ -46,6 +52,10 @@ export default {
         hideButton(){
             this.compose = !this.compose;
         },
+        updateData(email) {
+            this.emails.push(email);
+            console.log('Yes!');
+        },
         runSearchText(elInput) {
              this.emailToSerch = this.emails.filter(function(email) {
                 var emailSubject = email.subject.toLowerCase();;
@@ -58,14 +68,13 @@ export default {
         return {
             emails: [],
             emailToSerch: [],
-            compose: true,
-            text: 'hello'
+            compose: true
         }
     },
     created() {
         emailService.query()
             .then(emails => this.emails = emails)
-            .then(() => this.selectEmail(0))
+            .then(() => this.selectEmail(0));
     },
     components: {
         emailList,

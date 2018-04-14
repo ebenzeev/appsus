@@ -1,7 +1,9 @@
 export default {
     template: `
                 <section class="email-filter">
-                    <div class="search-items">Search: <input type="search" @input="runSearch" placeholder="Search by subject ..."/></div>
+                    <div class="search-items"><span class="search-item-word">Search: </span>
+                        <input type="search" @input="runSearch" placeholder="Search by subject ..."/>
+                    </div>
                     <div class="buttons">
                         <button class="sort-by-date" @click="reqSortByDateDescending">Sort Descending Date</button>
                         <button class="sort-by-date" @click="reqSortByDateAscending">Sort Ascending Date</button>

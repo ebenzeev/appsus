@@ -1,7 +1,8 @@
 import storageService from './localStorage.service.js';
 import utilService from './util-services.js'
 
-const KEY = 'emailAppKey';
+export const KEY = 'emailAppKey';
+
 var gId = 0 
 function createData() {
     let data = [

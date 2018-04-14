@@ -1,16 +1,15 @@
-import MisterEmailSerice from '../../services/mister-email.service.js'
+import MisterEmailSerice from '../../services/mister-email.service.js';
+
 export default {
     props: ['id'],
     template: `
-        <section>
-                <button @click="$emit('close', id)"> Delete </button>
-          <div v-if="email" class="email-details flex direction-col" >
-            <div class="flex direction-col" v-if="email">
+        <section class="email-details">
+            <button class="del-btn" @click="$emit('close', id)">Delete Email</button>
+            <div class="email-item-details" v-if="email">
                 <h2>{{ email.subject }}</h2>
                 <p><span  class="bold underline">From</span>: {{ email.sendFrom.name }} | {{ email.sendFrom.email }} </p>
                 <p><span  class="bold underline">Sent</span>: {{ email.sentAt }}</p>
-                <p>{{ email.body }}</p>
-            </div>
+                <div class="bold underline" style="font-size: 1.2em">Body</div><p>{{ email.body }}</p>
             </div>
             <p v-else>loading..</p>
         </section>

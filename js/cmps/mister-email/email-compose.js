@@ -3,12 +3,14 @@ import utilService from '../../services/util-services.js'
 
 export default {
     template: `
-            <section class="email-composer">
-            <h2>email compose</h2>
+        <section class="email-composer">
+            <h2>Email compose</h2>
             <form @submit.prevent="saveEmail">
-                Subject: <input type="text" v-model="email.subject" >
-                Message:<input type="text" v-model="email.body" >
-                <button type="submit"> {{(email.id)? 'Reply': 'Send'}}</button>
+                <div class="input input-subject">Your Name: <input type="text" v-model="email.sendFrom.name" ></div>
+                <div class="input input-subject">Your Email: <input type="email" v-model="email.sendFrom.email" ></div>
+                <div class="input input-subject">Your Subject: <input type="text" v-model="email.subject" ></div>
+                <div class="input input-message">Your Message:<textarea class="message-area" type="text" v-model="email.body" ></textarea></div>
+                <button type="submit" class="btn-comp"> {{(email.id)? 'Reply': 'Send'}}</button>
 
             </form>
         </section>
@@ -18,7 +20,7 @@ export default {
     ,
     data() {
         return {
-            email: {sendFrom: { name: 'Orela', email: 'orel@walla.com' } , subject: '', body: ``, isRead: false, sentAt: utilService.generateDate(Date.now()), time: Date.now()}
+            email: {sendFrom: { name: '', email: '' } , subject: '', body: ``, isRead: false, sentAt: utilService.generateDate(Date.now()), time: Date.now()}
         }
     },
     methods: {
@@ -29,10 +31,14 @@ export default {
                     console.log('Saved!', this.email.id);
                     this.emitSelected(this.email.id);
                     this.$router.push('/email/detail/'+this.email.id);
+                    this.$emit('updateData',this.email);
                 })
         },
         emitSelected(idx) {
             this.$emit('selected',idx);
         }
+    },
+    created() {
+        
     }
 }
